@@ -1,0 +1,31 @@
+#cloud-config
+
+cloud_config_modules:
+  - emit_upstart
+  - set_hostname
+  - locale
+  - set-passwords
+  - timezone
+  - disable-ec2-metadata
+  - runcmd
+
+output: {all: '| tee -a /var/log/cloud-init-output.log'}
+
+debug:
+  - verbose: true
+
+bootcmd:
+  - ip link list
+  - ip addr list
+
+users:
+  - name: akanda
+    gecos: Akanda
+    groups: users
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    passwd: $6$rounds=4096$zxaBh6omTayBSA$rI1.FNliuUl7R2SMdkj7zWv.FBhqGVd1lLYDatJd6MiE9WqEQx0M.o7bLyp5nA0CxV6ahoDb0m8Y5OQMDHx1V/
+    lock-passwd: false
+
+final_message: "Akanda appliance is running"
+
