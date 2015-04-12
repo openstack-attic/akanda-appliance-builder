@@ -15,8 +15,7 @@ debug:
   - verbose: true
 
 bootcmd:
-  - ip link list
-  - ip addr list
+  - /usr/local/bin/akanda-configure-management 52:54:00:12:34:56 fdca:3ba5:a17a:acda:5054:ff:fe12:3456
 
 users:
   - name: akanda

@@ -1,4 +1,3 @@
-install-static
-cloud-init-nocloud
+cloud-init-datasources
 source-repositories
 ansible
